@@ -1,0 +1,29 @@
+{
+  "name": "err-code",
+  "version": "0.1.0",
+  "description": "Create an error with a code",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "bugs": {
+    "url": "https://github.com/IndigoUnited/err-code/issues/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/IndigoUnited/err-code.git"
+  },
+  "keywords": [
+    "error",
+    "err",
+    "code",
+    "properties",
+    "property"
+  ],
+  "author": "IndigoUnited <hello@indigounited.com> (http://indigounited.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "~1.8.1",
+    "expect.js": "~0.2.0"
+  }
+}
