@@ -16,6 +16,7 @@ I find myself doing this repeatedly:
 ```js
 var err = new Error('My message');
 err.code = 'ESOMECODE';
+throw err;
 ```
 
 ## Usage
