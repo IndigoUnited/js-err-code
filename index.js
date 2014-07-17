@@ -1,7 +1,7 @@
 'use strict';
 
 function createError(msg, code, props) {
-    var err = new Error(msg);
+    var err = typeof msg === 'string' ? new Error(msg) : msg;
     var key;
 
     if (code != null) {

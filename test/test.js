@@ -26,4 +26,15 @@ describe('errcode', function () {
         expect(err.foo).to.be('bar');
         expect(err.bar).to.be('foo');
     });
+
+    it('should accept an error object and add code/properties', function () {
+        var myError = new Error('my message'),
+            err = errcode(myError, 'ESOME', { foo: 'bar', bar: 'foo' });
+
+        expect(err).to.be.an(Error);
+        expect(myError).to.be(err);
+        expect(err.code).to.be('ESOME');
+        expect(err.foo).to.be('bar');
+        expect(err.bar).to.be('foo');
+    });
 });

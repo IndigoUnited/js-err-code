@@ -37,6 +37,15 @@ var errcode = require('err-code');
 throw errcode('My message', 'ESOMECODE', { some: 'property' });
 ```
 
+Fill error object with a code and properties
+
+```js
+var errcode = require('err-code');
+
+throw errcode(new Error('My message'), 'ESOMECODE', { some: 'property' });
+```
+
+
 ## Tests
 
 `$ npm test`
