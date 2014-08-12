@@ -37,4 +37,12 @@ describe('errcode', function () {
         expect(err.foo).to.be('bar');
         expect(err.bar).to.be('foo');
     });
+
+    it('should create an error object with code and without message', function () {
+        var err = errcode(null, 'ESOME');
+
+        expect(err).to.be.an(Error);
+        expect(err.message).to.be('null');
+        expect(err.code).to.be('ESOME');
+    });
 });
