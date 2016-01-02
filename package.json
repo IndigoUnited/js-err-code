@@ -7,11 +7,11 @@
     "test": "mocha -R spec"
   },
   "bugs": {
-    "url": "https://github.com/IndigoUnited/err-code/issues/"
+    "url": "https://github.com/IndigoUnited/js-err-code/issues/"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/IndigoUnited/err-code.git"
+    "url": "git://github.com/IndigoUnited/js-err-code.git"
   },
   "keywords": [
     "error",
@@ -23,7 +23,7 @@
   "author": "IndigoUnited <hello@indigounited.com> (http://indigounited.com)",
   "license": "MIT",
   "devDependencies": {
-    "mocha": "~1.8.1",
-    "expect.js": "~0.2.0"
+    "mocha": "^2.3.4",
+    "expect.js": "^0.3.1"
   }
 }
