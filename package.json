@@ -1,6 +1,6 @@
 {
   "name": "err-code",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Create an error with a code",
   "main": "index.js",
   "scripts": {
