@@ -51,7 +51,7 @@ throw errcode(new Error('My message'), { detail: 'Additional information about t
 
 
 // You may also pass a string in the first argument and an error will be automatically created
-// for you, but stack trace will contain err-code so it's not advisable unless you don't really care.
+// for you, though the stack trace will contain err-code in it.
 
 // create error with message + code
 throw errcode('My message', 'ESOMECODE');
