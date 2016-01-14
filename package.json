@@ -23,7 +23,8 @@
   "author": "IndigoUnited <hello@indigounited.com> (http://indigounited.com)",
   "license": "MIT",
   "devDependencies": {
-    "mocha": "^2.3.4",
-    "expect.js": "^0.3.1"
+    "@satazor/eslint-config": "^1.0.8",
+    "expect.js": "^0.3.1",
+    "mocha": "^2.3.4"
   }
 }

@@ -1,10 +1,12 @@
 'use strict';
 
 function createError(msg, code, props) {
-    var err =  msg instanceof Error ? msg : new Error(msg);
+    var err = msg instanceof Error ? msg : new Error(msg);
     var key;
 
-    if (code != null) {
+    if (typeof code === 'object') {
+        props = code;
+    } else if (code != null) {
         err.code = code;
     }
 

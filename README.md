@@ -39,23 +39,23 @@ Simple usage.
 ```js
 var errcode = require('err-code');
 
-throw errcode('My message', 'ESOMECODE');
-```
-
-Other custom properties
-
-```js
-var errcode = require('err-code');
-
-throw errcode('My message', 'ESOMECODE', { some: 'property' });
-```
-
-Fill error object with a code and properties
-
-```js
-var errcode = require('err-code');
-
+// fill error with message + code
+throw errcode(new Error('My message'), 'ESOMECODE');
+// fill error with message + code + props
 throw errcode(new Error('My message'), 'ESOMECODE', { some: 'property' });
+// fill error with message + props
+throw errcode(new Error('My message'), { some: 'property' });
+
+
+// You may also pass a string in the first argument and an error will be automatically created
+// for you, but stack trace will contain err-code so it's not advisable unless you don't really care.
+
+// create error with message + code
+throw errcode('My message', 'ESOMECODE');
+// create error with message + code + props
+throw errcode('My message', 'ESOMECODE', { some: 'property' });
+// create error with message + props
+throw errcode('My message', { some: 'property' });
 ```
 
 
