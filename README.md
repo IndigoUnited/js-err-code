@@ -20,6 +20,8 @@ Create new error instances with a code and additional properties.
 `$ npm install err-code` - `NPM`   
 `$ bower install err-code` - `bower`
 
+The browser file is named index.umd.js which supports CommonJS, AMD and globals (errCode).
+
 
 ## Why
 
@@ -28,6 +30,7 @@ I find myself doing this repeatedly:
 ```js
 var err = new Error('My message');
 err.code = 'ESOMECODE';
+err.detail = 'Additional information about the error';
 throw err;
 ```
 
@@ -42,9 +45,9 @@ var errcode = require('err-code');
 // fill error with message + code
 throw errcode(new Error('My message'), 'ESOMECODE');
 // fill error with message + code + props
-throw errcode(new Error('My message'), 'ESOMECODE', { some: 'property' });
+throw errcode(new Error('My message'), 'ESOMECODE', { detail: 'Additional information about the error' });
 // fill error with message + props
-throw errcode(new Error('My message'), { some: 'property' });
+throw errcode(new Error('My message'), { detail: 'Additional information about the error' });
 
 
 // You may also pass a string in the first argument and an error will be automatically created
@@ -53,9 +56,9 @@ throw errcode(new Error('My message'), { some: 'property' });
 // create error with message + code
 throw errcode('My message', 'ESOMECODE');
 // create error with message + code + props
-throw errcode('My message', 'ESOMECODE', { some: 'property' });
+throw errcode('My message', 'ESOMECODE', { detail: 'Additional information about the error' });
 // create error with message + props
-throw errcode('My message', { some: 'property' });
+throw errcode('My message', { detail: 'Additional information about the error' });
 ```
 
 
