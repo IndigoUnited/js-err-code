@@ -4,7 +4,7 @@
   "description": "Create an error with a code",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "mocha"
   },
   "bugs": {
     "url": "https://github.com/IndigoUnited/js-err-code/issues/"
