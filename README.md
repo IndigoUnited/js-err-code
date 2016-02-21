@@ -6,7 +6,7 @@
 [downloads-image]:http://img.shields.io/npm/dm/err-code.svg
 [npm-image]:http://img.shields.io/npm/v/err-code.svg
 [travis-url]:https://travis-ci.org/IndigoUnited/js-err-code
-[travis-image]:http://img.shields.io/travis/IndigoUnited/js-err-code.svg
+[travis-image]:http://img.shields.io/travis/IndigoUnited/js-err-code/master.svg
 [david-dm-url]:https://david-dm.org/IndigoUnited/js-err-code
 [david-dm-image]:https://img.shields.io/david/IndigoUnited/js-err-code.svg
 [david-dm-dev-url]:https://david-dm.org/IndigoUnited/js-err-code#info=devDependencies
