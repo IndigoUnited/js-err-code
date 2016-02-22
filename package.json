@@ -4,7 +4,7 @@
   "description": "Create an error with a code",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint **/*.js --ignore-pattern *.umd.js",
+    "lint": "eslint '{*.js,lib/**/*.js,test/**/*.js}' --ignore-pattern *.umd.js",
     "test": "mocha --bail",
     "browserify": "browserify -s err-code index.js > index.umd.js"
   },
