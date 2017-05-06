@@ -9,7 +9,7 @@
 [travis-image]:http://img.shields.io/travis/IndigoUnited/js-err-code/master.svg
 [david-dm-url]:https://david-dm.org/IndigoUnited/js-err-code
 [david-dm-image]:https://img.shields.io/david/IndigoUnited/js-err-code.svg
-[david-dm-dev-url]:https://david-dm.org/IndigoUnited/js-err-code#info=devDependencies
+[david-dm-dev-url]:https://david-dm.org/IndigoUnited/js-err-code?type=dev
 [david-dm-dev-image]:https://img.shields.io/david/dev/IndigoUnited/js-err-code.svg
 
 Create new error instances with a code and additional properties.
