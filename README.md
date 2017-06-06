@@ -1,6 +1,6 @@
 # err-code
 
-[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency status][david-dm-image]][david-dm-url] [![Dev Dependency status][david-dm-dev-image]][david-dm-dev-url]
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency status][david-dm-image]][david-dm-url] [![Dev Dependency status][david-dm-dev-image]][david-dm-dev-url] [![Greenkeeper badge][greenkeeper-image]][greenkeeper-url]
 
 [npm-url]:https://npmjs.org/package/err-code
 [downloads-image]:http://img.shields.io/npm/dm/err-code.svg
@@ -11,6 +11,8 @@
 [david-dm-image]:https://img.shields.io/david/IndigoUnited/js-err-code.svg
 [david-dm-dev-url]:https://david-dm.org/IndigoUnited/js-err-code?type=dev
 [david-dm-dev-image]:https://img.shields.io/david/dev/IndigoUnited/js-err-code.svg
+[greenkeeper-image]:https://badges.greenkeeper.io/IndigoUnited/js-err-code.svg
+[greenkeeper-url]:https://greenkeeper.io/
 
 Create new error instances with a code and additional properties.
 
