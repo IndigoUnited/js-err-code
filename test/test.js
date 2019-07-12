@@ -5,36 +5,10 @@ var expect = require('expect.js');
 
 describe('errcode', function () {
     describe('string as first argument', function () {
-        it('should create an error object without code', function () {
-            var err = errcode('my message');
-
-            expect(err).to.be.an(Error);
-            expect(err.hasOwnProperty(err.code)).to.be(false);
-        });
-
-        it('should create an error object with code', function () {
-            var err = errcode('my message', 'ESOME');
-
-            expect(err).to.be.an(Error);
-            expect(err.code).to.be('ESOME');
-        });
-
-        it('should create an error object with code and properties', function () {
-            var err = errcode('my message', 'ESOME', { foo: 'bar', bar: 'foo' });
-
-            expect(err).to.be.an(Error);
-            expect(err.code).to.be('ESOME');
-            expect(err.foo).to.be('bar');
-            expect(err.bar).to.be('foo');
-        });
-
-        it('should create an error object without code but with properties', function () {
-            var err = errcode('my message', { foo: 'bar', bar: 'foo' });
-
-            expect(err).to.be.an(Error);
-            expect(err.code).to.be(undefined);
-            expect(err.foo).to.be('bar');
-            expect(err.bar).to.be('foo');
+        it('should throw an error', function () {
+            expect(function () { errcode('my message'); }).to.throwError(function (err) {
+                expect(err).to.be.a(TypeError);
+            });
         });
     });
 
@@ -76,17 +50,17 @@ describe('errcode', function () {
         });
     });
 
-    it('should allow passing null & undefined in the first argument', function () {
-        var err;
+    describe('falsy first arguments', function () {
+        it('should not allow passing null as the first argument', function () {
+            expect(function () { errcode(null); }).to.throwError(function (err) {
+                expect(err).to.be.a(TypeError);
+            });
+        });
 
-        err = errcode(null, 'ESOME');
-        expect(err).to.be.an(Error);
-        expect(err.message).to.be('null');
-        expect(err.code).to.be('ESOME');
-
-        err = errcode(undefined, 'ESOME');
-        expect(err).to.be.an(Error);
-        expect(err.message).to.be('');
-        expect(err.code).to.be('ESOME');
+        it('should not allow passing undefined as the first argument', function () {
+            expect(function () { errcode(undefined); }).to.throwError(function (err) {
+                expect(err).to.be.a(TypeError);
+            });
+        });
     });
 });

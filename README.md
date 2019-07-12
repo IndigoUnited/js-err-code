@@ -19,8 +19,11 @@ Create new error instances with a code and additional properties.
 
 ## Installation
 
-`$ npm install err-code` - `NPM`   
-`$ bower install err-code` - `bower`
+```console
+$ npm install err-code
+// or
+$ bower install err-code
+```
 
 The browser file is named index.umd.js which supports CommonJS, AMD and globals (errCode).
 
@@ -50,17 +53,6 @@ throw errcode(new Error('My message'), 'ESOMECODE');
 throw errcode(new Error('My message'), 'ESOMECODE', { detail: 'Additional information about the error' });
 // fill error with message + props
 throw errcode(new Error('My message'), { detail: 'Additional information about the error' });
-
-
-// You may also pass a string in the first argument and an error will be automatically created
-// for you, though the stack trace will contain err-code in it.
-
-// create error with message + code
-throw errcode('My message', 'ESOMECODE');
-// create error with message + code + props
-throw errcode('My message', 'ESOMECODE', { detail: 'Additional information about the error' });
-// create error with message + props
-throw errcode('My message', { detail: 'Additional information about the error' });
 ```
 
 

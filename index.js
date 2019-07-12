@@ -1,8 +1,11 @@
 'use strict';
 
-function createError(msg, code, props) {
-    var err = msg instanceof Error ? msg : new Error(msg);
+function createError(err, code, props) {
     var key;
+
+    if (!(err instanceof Error)) {
+        throw new TypeError('Please pass an Error to err-code');
+    }
 
     if (typeof code === 'object') {
         props = code;
