@@ -45,6 +45,7 @@ throw err;
 Simple usage.
 
 ```js
+// JavaScript
 var errcode = require('err-code');
 
 // fill error with message + code
@@ -55,6 +56,17 @@ throw errcode(new Error('My message'), 'ESOMECODE', { detail: 'Additional inform
 throw errcode(new Error('My message'), { detail: 'Additional information about the error' });
 ```
 
+```typescript
+// TypeScript
+import errcode = require('err-code');
+
+// fill error with message + code
+throw errcode(new Error('My message'), 'ESOMECODE');
+// fill error with message + code + props
+throw errcode(new Error('My message'), 'ESOMECODE', { detail: 'Additional information about the error' });
+// fill error with message + props
+throw errcode(new Error('My message'), { detail: 'Additional information about the error' });
+```
 
 ## Tests
 
