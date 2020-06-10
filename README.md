@@ -55,6 +55,10 @@ throw errcode(new Error('My message'), 'ESOMECODE', { detail: 'Additional inform
 throw errcode(new Error('My message'), { detail: 'Additional information about the error' });
 ```
 
+## Pre-existing fields
+
+If the passed `Error` already has a `.code` field, or fields specified in the third argument to `errcode` they will be overwritten, unless the fields have been [defined as read-only](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) or the `Error` object has been [frozen](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze).
+
 
 ## Tests
 
