@@ -27,7 +27,7 @@
   "devDependencies": {
     "@satazor/eslint-config": "^3.0.0",
     "browserify": "^14.0.0",
-    "eslint": "^3.0.0",
+    "eslint": "^4.18.2",
     "expect.js": "^0.3.1",
     "mocha": "^3.0.2"
   }
