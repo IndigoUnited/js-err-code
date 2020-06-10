@@ -48,6 +48,28 @@ describe('errcode', function () {
             expect(err.foo).to.be('bar');
             expect(err.bar).to.be('foo');
         });
+
+        it('should not attempt to set non-writable field', function () {
+            var myErr = new Error('my message');
+            var err;
+
+            Object.defineProperty(myErr, 'code', {
+                value: 'derp',
+                writable: false,
+            });
+            err = errcode(myErr, 'ERR_WAT');
+
+            expect(err).to.be.an(Error);
+            expect(err.code).to.be('derp');
+        });
+
+        it('should not add code to frozen object', function () {
+            var myErr = new Error('my message');
+            var err = errcode(Object.freeze(myErr), 'ERR_WAT');
+
+            expect(err).to.be.an(Error);
+            expect(err.code).to.be(undefined);
+        });
     });
 
     describe('falsy first arguments', function () {
