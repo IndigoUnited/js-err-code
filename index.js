@@ -1,5 +1,21 @@
 'use strict';
 
+function maybeDefineProperty(obj, name, value) {
+    var descriptor;
+
+    if (Object.isFrozen(obj)) {
+        return;
+    }
+
+    descriptor = Object.getOwnPropertyDescriptor(obj, name);
+
+    if (descriptor && !descriptor.writable) {
+        return;
+    }
+
+    obj[name] = value;
+}
+
 function createError(err, code, props) {
     var key;
 
@@ -10,12 +26,12 @@ function createError(err, code, props) {
     if (typeof code === 'object') {
         props = code;
     } else if (code != null) {
-        err.code = code;
+        maybeDefineProperty(err, 'code', code);
     }
 
     if (props) {
         for (key in props) {
-            err[key] = props[key];
+            maybeDefineProperty(err, key, props[key]);
         }
     }
 
