@@ -1,29 +1,51 @@
 'use strict';
 
-function createError(err, code, props) {
+function assign(obj, props) {
     var key;
+    var definition;
+
+    for (key in props) {
+        definition = Object.getOwnPropertyDescriptor(obj, key);
+
+        if (definition && !definition.writable) {
+            throw new TypeError("Cannot assign to read only property '" + key + "' of object '" + obj + "'");
+        }
+
+        obj[key] = props[key];
+    }
+
+    return obj;
+}
+
+function createError(err, code, props) {
+    var newErr;
 
     if (!(err instanceof Error)) {
         throw new TypeError('Please pass an Error to err-code');
     }
 
+    if (!props) {
+        props = {};
+    }
+
     if (typeof code === 'object') {
         props = code;
-    } else if (code != null) {
-        try {
-            err.code = code
-        } catch (err) { }
+        code = undefined;
     }
 
-    if (props) {
-        for (key in props) {
-            try {
-                err[key] = props[key]
-            } catch (err) { }
-        }
+    if (code) {
+        props.code = code;
     }
 
-    return err;
+    try {
+        return assign(err, props);
+    } catch (_) {
+        props.cause = err;
+        newErr = new Error(err.message);
+        newErr.stack = err.stack;
+
+        return assign(newErr, props);
+    }
 }
 
 module.exports = createError;

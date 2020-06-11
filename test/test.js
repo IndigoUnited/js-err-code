@@ -49,7 +49,7 @@ describe('errcode', function () {
             expect(err.bar).to.be('foo');
         });
 
-        it('should not attempt to set non-writable field', function () {
+        it('should set a non-writable field', function () {
             var myErr = new Error('my message');
             var err;
 
@@ -60,34 +60,40 @@ describe('errcode', function () {
             err = errcode(myErr, 'ERR_WAT');
 
             expect(err).to.be.an(Error);
-            expect(err.code).to.be('derp');
+            expect(err.stack).to.equal(myErr.stack);
+            expect(err.code).to.be('ERR_WAT');
+            expect(err.cause.code).to.be('derp');
         });
 
-        it('should not add code to frozen object', function () {
+        it('should add a code to frozen object', function () {
             var myErr = new Error('my message');
             var err = errcode(Object.freeze(myErr), 'ERR_WAT');
 
             expect(err).to.be.an(Error);
-            expect(err.code).to.be(undefined);
+            expect(err.stack).to.equal(myErr.stack);
+            expect(err.code).to.be('ERR_WAT');
+            expect(err.cause.code).to.be(undefined);
         });
 
-        it('should not attempt to set on field that throws at assignment time', function () {
+        it('should to set a field that throws at assignment time', function () {
             var myErr = new Error('my message');
             var err;
 
             Object.defineProperty(myErr, 'code', {
                 enumerable: true,
-                set: () => {
-                    throw new Error('Nope!')
+                set: function () {
+                    throw new Error('Nope!');
                 },
-                get: () => {
-                    return 'derp'
-                }
+                get: function () {
+                    return 'derp';
+                },
             });
             err = errcode(myErr, 'ERR_WAT');
 
             expect(err).to.be.an(Error);
-            expect(err.code).to.be('derp');
+            expect(err.stack).to.equal(myErr.stack);
+            expect(err.code).to.be('ERR_WAT');
+            expect(err.cause.code).to.be('derp');
         });
     });
 
