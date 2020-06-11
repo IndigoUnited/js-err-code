@@ -70,6 +70,25 @@ describe('errcode', function () {
             expect(err).to.be.an(Error);
             expect(err.code).to.be(undefined);
         });
+
+        it('should not attempt to set on field that throws at assignment time', function () {
+            var myErr = new Error('my message');
+            var err;
+
+            Object.defineProperty(myErr, 'code', {
+                enumerable: true,
+                set: () => {
+                    throw new Error('Nope!')
+                },
+                get: () => {
+                    return 'derp'
+                }
+            });
+            err = errcode(myErr, 'ERR_WAT');
+
+            expect(err).to.be.an(Error);
+            expect(err.code).to.be('derp');
+        });
     });
 
     describe('falsy first arguments', function () {
