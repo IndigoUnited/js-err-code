@@ -4,6 +4,8 @@ function assign(obj, props) {
     for (const key in props) {
         Object.defineProperty(obj, key, {
             value: props[key],
+            enumerable: true,
+            configurable: true
         });
     }
 
