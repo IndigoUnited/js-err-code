@@ -1,17 +1,10 @@
 'use strict';
 
 function assign(obj, props) {
-    let key;
-    let definition;
-
-    for (key in props) {
-        definition = Object.getOwnPropertyDescriptor(obj, key);
-
-        if (definition && !definition.writable) {
-            throw new TypeError(`Cannot assign to read only property '${key}' of object '${obj}'`);
-        }
-
-        obj[key] = props[key];
+    for (const key in props) {
+        Object.defineProperty(obj, key, {
+            value: props[key],
+        });
     }
 
     return obj;
@@ -45,15 +38,7 @@ function createError(err, code, props) {
 
         ErrClass.prototype = Object.create(Object.getPrototypeOf(err));
 
-        const newErr = new ErrClass();
-
-        for (const key in props) {
-            Object.defineProperty(newErr, key, {
-                value: props[key],
-            });
-        }
-
-        return newErr;
+        return assign(new ErrClass(), props);
     }
 }
 
