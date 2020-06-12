@@ -31,7 +31,7 @@ function createError(err, code, props) {
         code = undefined;
     }
 
-    if (code) {
+    if (code != null) {
         props.code = code;
     }
 
