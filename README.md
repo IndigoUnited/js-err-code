@@ -57,7 +57,7 @@ throw errcode(new Error('My message'), { detail: 'Additional information about t
 
 ## Pre-existing fields
 
-If the passed `Error` already has a `.code` field, or fields specified in the third argument to `errcode` they will be overwritten, unless the fields are read only or otherwise throw during assignment in which case a new `Error` object will be created.  The `.stack` and `.message` properties will be carried over from the original error, and `.code` or any passed properties will be set on it.  The original error will be available via the `.cause` property of the returned error.
+If the passed `Error` already has a `.code` field, or fields specified in the third argument to `errcode` they will be overwritten, unless the fields are read only or otherwise throw during assignment in which case a new object will be created that shares a prototype chain with the original `Error`. The `.stack` and `.message` properties will be carried over from the original error and `.code` or any passed properties will be set on it.
 
 
 ## Tests
