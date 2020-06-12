@@ -1,14 +1,14 @@
 'use strict';
 
 function assign(obj, props) {
-    var key;
-    var definition;
+    let key;
+    let definition;
 
     for (key in props) {
         definition = Object.getOwnPropertyDescriptor(obj, key);
 
         if (definition && !definition.writable) {
-            throw new TypeError("Cannot assign to read only property '" + key + "' of object '" + obj + "'");
+            throw new TypeError(`Cannot assign to read only property '${key}' of object '${obj}'`);
         }
 
         obj[key] = props[key];
@@ -18,8 +18,6 @@ function assign(obj, props) {
 }
 
 function createError(err, code, props) {
-    var newErr;
-
     if (!(err instanceof Error)) {
         throw new TypeError('Please pass an Error to err-code');
     }
@@ -40,11 +38,22 @@ function createError(err, code, props) {
     try {
         return assign(err, props);
     } catch (_) {
-        props.cause = err;
-        newErr = new Error(err.message);
-        newErr.stack = err.stack;
+        props.message = err.message;
+        props.stack = err.stack;
 
-        return assign(newErr, props);
+        const ErrClass = function () {};
+
+        ErrClass.prototype = Object.create(Object.getPrototypeOf(err));
+
+        const newErr = new ErrClass();
+
+        for (const key in props) {
+            Object.defineProperty(newErr, key, {
+                value: props[key],
+            });
+        }
+
+        return newErr;
     }
 }
 
