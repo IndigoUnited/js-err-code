@@ -14,7 +14,7 @@ function assign(obj, props) {
 }
 
 function createError(err, code, props) {
-    if (!(err instanceof Error)) {
+    if (!err || typeof err === 'string') {
         throw new TypeError('Please pass an Error to err-code');
     }
 
