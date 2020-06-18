@@ -132,6 +132,15 @@ describe('errcode', () => {
                 otherErr.code = 'derp';
             }).to.throwError();
         });
+
+        it('should support errors that are not Errors', () => {
+            const err = errcode({
+                message: 'Oh noes!',
+            }, 'ERR_WAT');
+
+            expect(err.message).to.be('Oh noes!');
+            expect(err.code).to.be('ERR_WAT');
+        });
     });
 
     describe('falsy first arguments', () => {
