@@ -3,6 +3,7 @@
   "version": "2.0.3",
   "description": "Create an error with a code",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "lint": "eslint '{*.js,test/**/*.js}' --ignore-pattern *.umd.js",
     "test": "mocha --bail",
