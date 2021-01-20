@@ -6,6 +6,7 @@ const expect = require('expect.js');
 describe('errcode', () => {
     describe('string as first argument', () => {
         it('should throw an error', () => {
+            // @ts-expect-error - strings are not supported
             expect(() => { errcode('my message'); }).to.throwError((err) => {
                 expect(err).to.be.a(TypeError);
             });
@@ -15,6 +16,7 @@ describe('errcode', () => {
     describe('error as first argument', () => {
         it('should accept an error and do nothing', () => {
             const myErr = new Error('my message');
+            // @ts-expect-error - more args are expected
             const err = errcode(myErr);
 
             expect(err).to.be(myErr);
@@ -107,6 +109,10 @@ describe('errcode', () => {
 
         it('should add a code to a class that extends Error', () => {
             class CustomError extends Error {
+                // eslint-disable-next-line valid-jsdoc
+                /**
+                 * @param {any} val
+                 */
                 set code(val) {
                     throw new Error('Nope!');
                 }
@@ -134,6 +140,7 @@ describe('errcode', () => {
         });
 
         it('should support errors that are not Errors', () => {
+            // @ts-expect-error - API not supported at type level
             const err = errcode({
                 message: 'Oh noes!',
             }, 'ERR_WAT');
@@ -145,12 +152,14 @@ describe('errcode', () => {
 
     describe('falsy first arguments', () => {
         it('should not allow passing null as the first argument', () => {
+            // @ts-expect-error - null is not valid param
             expect(() => { errcode(null); }).to.throwError((err) => {
                 expect(err).to.be.a(TypeError);
             });
         });
 
         it('should not allow passing undefined as the first argument', () => {
+            // @ts-expect-error - undefined is not valid param
             expect(() => { errcode(undefined); }).to.throwError((err) => {
                 expect(err).to.be.a(TypeError);
             });
