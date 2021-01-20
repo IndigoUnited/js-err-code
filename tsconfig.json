@@ -2,7 +2,6 @@
   "compilerOptions": {
     "strict": true,
     // project options
-    "outDir": "dist",
     "allowJs": true,
     "checkJs": true,
     "target": "ES2019",
@@ -14,7 +13,7 @@
       "DOM",
       "DOM.Iterable"
     ],
-    "noEmit": false,
+    "noEmit": true,
     "noEmitOnError": true,
     "incremental": true,
     "composite": true,
@@ -36,6 +35,7 @@
     "resolveJsonModule": true
   },
   "include": [
+    "./*.ts",
     "test"
   ]
 }

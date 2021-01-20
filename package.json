@@ -6,7 +6,7 @@
   "types": "index.d.ts",
   "scripts": {
     "lint": "eslint '{*.js,test/**/*.js}' --ignore-pattern *.umd.js",
-    "check": "tsc --noEmit",
+    "check": "tsc --build",
     "test": "mocha --bail",
     "browserify": "browserify -s err-code index.js > index.umd.js"
   },
