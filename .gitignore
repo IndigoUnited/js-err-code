@@ -3,3 +3,4 @@ npm-debug.*
 *.tsbuildinfo
 dist
 index.umd.js
+*.tgz
