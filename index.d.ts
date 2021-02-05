@@ -1,4 +1,4 @@
-interface Err<Code> extends Error {
+export interface Err<Code> extends Error {
   code: Code
 }
 
