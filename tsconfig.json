@@ -13,7 +13,6 @@
       "DOM",
       "DOM.Iterable"
     ],
-    "noEmit": true,
     "noEmitOnError": true,
     "incremental": true,
     "composite": true,
@@ -32,10 +31,15 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "stripInternal": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "outDir": "dist"
   },
   "include": [
-    "./*.ts",
-    "test"
+    "."
+  ],
+  "exclude": [
+    "*.umd.js",
+    "dist",
+    "node_modules"
   ]
 }

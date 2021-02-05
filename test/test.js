@@ -109,9 +109,8 @@ describe('errcode', () => {
 
         it('should add a code to a class that extends Error', () => {
             class CustomError extends Error {
-                // eslint-disable-next-line valid-jsdoc
                 /**
-                 * @param {any} val
+                 * @param {any} val - wat
                  */
                 set code(val) {
                     throw new Error('Nope!');
@@ -140,7 +139,6 @@ describe('errcode', () => {
         });
 
         it('should support errors that are not Errors', () => {
-            // @ts-expect-error - API not supported at type level
             const err = errcode({
                 message: 'Oh noes!',
             }, 'ERR_WAT');
