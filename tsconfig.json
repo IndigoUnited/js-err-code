@@ -13,7 +13,6 @@
       "DOM",
       "DOM.Iterable"
     ],
-    "noEmit": true,
     "noEmitOnError": true,
     "incremental": true,
     "composite": true,
@@ -35,7 +34,7 @@
     "resolveJsonModule": true
   },
   "include": [
-    "./*.ts",
+    "./index.js",
     "test"
   ]
 }

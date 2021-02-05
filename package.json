@@ -3,12 +3,12 @@
   "version": "3.0.0",
   "description": "Create an error with a code",
   "main": "index.js",
-  "types": "index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "lint": "eslint '{*.js,test/**/*.js}' --ignore-pattern *.umd.js",
-    "check": "tsc --build",
+    "lint": "eslint '{./*.js,test/**/*.js}'",
+    "prepare": "tsc --emitDeclarationOnly --declarationDir dist",
     "test": "mocha --bail",
-    "browserify": "browserify -s err-code index.js > index.umd.js"
+    "prepublishOnly": "browserify -s err-code index.js > index.umd.js"
   },
   "bugs": {
     "url": "https://github.com/IndigoUnited/js-err-code/issues/"
@@ -30,10 +30,10 @@
     "@satazor/eslint-config": "^3.0.0",
     "@types/expect.js": "0.3.29",
     "@types/mocha": "8.2.0",
-    "browserify": "^14.0.0",
-    "eslint": "^3.0.0",
+    "browserify": "^17.0.0",
+    "eslint": "^7.19.0",
     "expect.js": "^0.3.1",
-    "mocha": "^3.0.2",
+    "mocha": "^8.2.1",
     "typescript": "^4.1.3"
   }
 }
