@@ -34,7 +34,11 @@
     "resolveJsonModule": true
   },
   "include": [
-    "./index.js",
-    "test"
+    "."
+  ],
+  "exclude": [
+    "*.umd.js",
+    "dist",
+    "node_modules"
   ]
 }
