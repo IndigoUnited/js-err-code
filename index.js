@@ -31,23 +31,12 @@ function assign(obj, props) {
  * @param {Extensions} [props] - Props to set on the error
  * @returns {Error & Extensions}
  */
-function createError(err, code, props) {
+function createError(err, code, props = {}) {
     if (!err || typeof err === 'string') {
         throw new TypeError('Please pass an Error to err-code');
     }
 
-    if (!props) {
-        props = {};
-    }
-
-    if (typeof code === 'object') {
-        props = code;
-        code = '';
-    }
-
-    if (code) {
-        props.code = code;
-    }
+    typeof code === 'object' ? props = code : props.code = code;
 
     try {
         return assign(err, props);
